@@ -6,6 +6,7 @@ configure do
   config_path = File.dirname(__FILE__) + "/config/deploy.yml"
   config = YAML.load_file(config_path)
 
+  set :port, 3334
   set :app_path, config["app_path"]
 
 end
