@@ -15,7 +15,9 @@ post '/deploy' do
   repo_ref = received_params["ref"]
 
   if repo_ref.include?("tags/homolog")
-    `cd #{options.app_path} && cap pull_and_checkout -s ref=#{repo_ref}`
+    `cd #{options.app_path} && git pull && git checkout #{repo_ref} && rake db:migrate`
+  elsif repo_ref.include?("tags/prod")
+    # Will be implemented when the production environment begin to be assembled.
   end
 
 end
