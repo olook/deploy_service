@@ -24,3 +24,9 @@ get '/rollback' do
   @tags = `cd #{options.app_path} && git tag`.split("\n")
   erb :rollback
 end
+
+post '/rollback_tag' do
+  @tag_version = params[:tag_version]
+  `cd #{options.app_path} && git checkout master && git checkout #{@tag_version} && rake db:migrate`
+  erb :rollback_tag
+end
