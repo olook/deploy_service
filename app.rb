@@ -15,7 +15,7 @@ post '/deploy' do
   repo_ref = received_params["ref"]
 
   if repo_ref.include?("tags/homolog")
-    `cd #{options.app_path} && git checkout master && git pull && git checkout #{repo_ref} && rake db:migrate`
+    `cd #{options.app_path} && git add . && git commit -m "preparing for tag changing" && git checkout master && git pull && git checkout #{repo_ref} && rake db:migrate`
   end
 
 end
@@ -27,6 +27,6 @@ end
 
 post '/rollback_tag' do
   @tag_version = params[:tag_version]
-  `cd #{options.app_path} && git checkout master && git checkout #{@tag_version} && rake db:migrate`
+  `cd #{options.app_path} && git add . && git commit -m "preparing for tag changing" && git checkout master && git checkout #{@tag_version} && rake db:migrate`
   erb :rollback_tag
 end
