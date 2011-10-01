@@ -19,3 +19,8 @@ post '/deploy' do
   end
 
 end
+
+get '/rollback' do
+  @tags = `cd #{options.app_path} && git tag`.split("\n")
+  erb :rollback
+end

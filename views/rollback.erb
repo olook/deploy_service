@@ -1,0 +1,14 @@
+<html>
+<body>
+
+<form action="/rollback_tag" method="POST">
+<select name="tag_version">
+<% @tags.each do |tag| %>
+    <option value="<%= tag %>"><%= tag %></option>
+<% end %>
+</select>
+<p><input type="submit" value="Fire in the hole!" /></p>
+</form>
+
+</body>
+</html>
