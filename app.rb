@@ -31,8 +31,6 @@ post '/rollback_tag' do
   erb :rollback_tag
 end
 
-private
-
 def deploy_tag(tag)
   `cd #{options.app_path} && git add . && git commit -m "preparing for tag changing" && git checkout master && git pull && git checkout #{tag} && rake db:migrate`
 end
