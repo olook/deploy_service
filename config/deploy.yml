@@ -2,3 +2,4 @@ app_path: /srv/olook
 deb_path: /opt/workspace
 repo_path: /usr/share/nginx/www/
 deb_pool_path: /usr/share/nginx/www/pool
+bundled_repo_path: /opt/workspace/olook
