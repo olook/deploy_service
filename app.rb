@@ -11,6 +11,7 @@ configure do
   set :deb_path, config["deb_path"]
   set :bundled_repo_path, config["bundled_repo_path"]
   set :repo_path, config["repo_path"]
+  set :deb_pool_path, config["deb_pool_path"]
 
 end
 
