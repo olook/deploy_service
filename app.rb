@@ -26,7 +26,7 @@ post '/deploy' do
     `cd #{options.bundled_repo_path} && git checkout master && git pull && git checkout #{repo_ref} && \
      cd #{options.deb_path} && rm -f olook.list && \
      echo "#{list_info}" > olook.list && find olook/ -type d -ls | awk '{ print "f 755 root sys /srv/"$11" "$11"/*" }' | grep -v .git | grep -v .svn >> olook.list && \
-     epm -f deb -n -a amd64 --output-dir /usr/share/nginx/www/debs/pool olook && \
+     epm -f deb -n -a amd64 --output-dir #{options.deb_pool_path} olook && \
      cd #{options.repo_path} && sh -x update_metadata.sh`
   end
 
