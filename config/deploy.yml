@@ -1,1 +1,3 @@
 app_path: /srv/olook
+deb_path: /opt/workspace
+repo_path: /usr/share/nginx/www/
