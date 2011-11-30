@@ -34,7 +34,7 @@ post '/deploy' do
 end
 
 get '/rollback' do
-  @tags = `cd #{options.app_path} && git tag`.split("\n")
+  @tags = `cd #{options.app_path} && git tag | grep homolog`.split("\n")
   erb :rollback
 end
 
