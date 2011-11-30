@@ -20,7 +20,7 @@ post '/deploy' do
   repo_ref = received_params["ref"]
 
   if repo_ref.include?("tags/homolog")
-    `cd #{options.app_path} && git add . && git checkout master && git pull && git checkout #{repo_ref} && bundle install && rake db:migrate RAILS_ENV=production && init_unicorn`
+    `cd #{options.app_path} && git reset HEAD . && git checkout . && git checkout master && git pull && git checkout #{repo_ref} && bundle install && rake db:migrate RAILS_ENV=production && init_unicorn`
   elsif repo_ref.include?("tags/production")
     list_info = "%product olook\n%copyright 2011 by Olook\n%vendor Codeminer42\n%description Olook Web Application\n%license LICENSE\n%readme README.markdown\n%version #{repo_ref[22..45]}\n"
 
