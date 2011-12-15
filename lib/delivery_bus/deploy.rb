@@ -21,6 +21,8 @@ module DeliveryBus
       create_list_file
       pack_deb
     end
+
+    private
   
     def set_deploy_type
       if @repo_ref.include?('tags/homolog')
