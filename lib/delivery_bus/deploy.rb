@@ -1,7 +1,7 @@
 module DeliveryBus
   class Deploy
-    attr_reader :deb_path, :repo_path, :deb_pool_path,
-                :bundled_repo_path, :repo_ref, :deploy_version
+    attr_reader :deb_path, :repo_path, :deb_pool_path, :bundled_repo_path,
+                :repo_ref, :deploy_type, :deploy_version
   
     def initialize
       config_path        = File.dirname(__FILE__) + '/../../config/deploy.yml'
