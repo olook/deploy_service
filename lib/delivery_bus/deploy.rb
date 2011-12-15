@@ -64,7 +64,7 @@ module DeliveryBus
     end
 
     def pack_deb
-      `epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} #{@bundled_repo_path} && \
+      `cd #{@deb_path}; epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} olook && \
        cd #{@repo_path} && sh -x update_metadata.sh`
     end
   
