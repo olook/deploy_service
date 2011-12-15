@@ -17,11 +17,11 @@ module DeliveryBus
       @repo_ref = parsed_payload['ref']
       set_deploy_version
       set_deploy_type
-      exec_cmd
+      manipulate_repo
+      create_list_file
+      pack_deb
     end
   
-    private
-
     def set_deploy_type
       if @repo_ref.include?('tags/homolog')
         set_homolog_type
@@ -53,12 +53,18 @@ module DeliveryBus
     def set_production_version
       @deploy_version = @repo_ref[22..45]
     end
-  
-    def exec_cmd
-      `cd #{@bundled_repo_path} && git checkout master && git pull && git checkout #{@repo_ref} && \
-       cd #{@deb_path} && rm -f olook.list && \
-       echo "#{deb_info}" > olook.list && find olook/ -type d -ls | awk '{ print "f 755 root sys /srv/"$11" "$11"/*" }' | grep -v .git | grep -v .svn >> olook.list && \
-       epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} olook && \
+
+    def manipulate_repo
+      `cd #{@bundled_repo_path} && git checkout master && git pull && git checkout #{@repo_ref}`
+    end
+
+    def create_list_file
+      `cd #{@deb_path} && rm -f olook.list && \
+       echo "#{deb_info}" > olook.list && find olook/ -type d -ls | awk '{ print "f 755 root sys /srv/"$11" "$11"/*" }' | grep -v .git | grep -v .svn >> olook.list`
+    end
+
+    def pack_deb
+      `epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} olook && \
        cd #{@repo_path} && sh -x update_metadata.sh`
     end
   
