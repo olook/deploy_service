@@ -1,3 +1,4 @@
 .rvmrc
 *.swp
 nohup.out
+config/deploy.yml
