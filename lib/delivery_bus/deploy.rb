@@ -6,10 +6,10 @@ module DeliveryBus
     def initialize
       config_path        = File.dirname(__FILE__) + '/../../config/deploy.yml'
       config             = YAML.load_file(config_path)
-      @deb_path          = config[:deb_path]
-      @repo_path         = config[:repo_path]
-      @deb_pool_path     = config[:deb_pool_path]
-      @bundled_repo_path = config[:bundled_repo_path]
+      @deb_path          = config['deb_path']
+      @repo_path         = config['repo_path']
+      @deb_pool_path     = config['deb_pool_path']
+      @bundled_repo_path = config['bundled_repo_path']
     end
   
     def dispatcher(payload)
