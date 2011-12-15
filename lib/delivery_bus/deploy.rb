@@ -47,7 +47,7 @@ module DeliveryBus
     end
   
     def set_homolog_version
-      @deploy_version = @repo_ref[25..45]
+      @deploy_version = @repo_ref[19..45]
     end
   
     def set_production_version
