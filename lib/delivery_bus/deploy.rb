@@ -4,7 +4,7 @@ module DeliveryBus
                 :bundled_repo_path, :repo_ref, :deploy_version
   
     def initialize
-      config_path        = File.dirname(__FILE__) + '/config/deploy.yml'
+      config_path        = File.dirname(__FILE__) + '/../../config/deploy.yml'
       config             = YAML.load_file(config_path)
       @app_path          = config[:app_path]
       @deb_path          = config[:deb_path]
