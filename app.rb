@@ -6,8 +6,7 @@ configure do
 end
 
 post '/deploy' do
-  received_payload = JSON.parse(params[:payload])
-  DeliveryBus::Deploy.new.dispatcher(received_payload['ref'])
+  DeliveryBus::Deploy.new.dispatcher(params[:payload])
 end
 
 get '/rollback' do

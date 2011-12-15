@@ -13,8 +13,8 @@ module DeliveryBus
       @bundled_repo_path = config[:bundled_repo_path]
     end
   
-    def dispatcher(payload_ref)
-      parsed_payload = parse_json(payload_ref)
+    def dispatcher(payload)
+      parsed_payload = parse_json(payload)
       @repo_ref = parsed_payload['ref']
       set_deploy_version
       set_deploy_type
