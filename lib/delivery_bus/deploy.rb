@@ -30,11 +30,11 @@ module DeliveryBus
       end
     end
 
-    def homolog_type
+    def set_homolog_type
       @deploy_type = 'homolog'
     end
 
-    def production_type
+    def set_production_type
       @deploy_type = 'production'
     end
 
