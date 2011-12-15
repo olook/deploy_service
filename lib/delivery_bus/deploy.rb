@@ -59,12 +59,12 @@ module DeliveryBus
     end
 
     def create_list_file
-      `cd #{@deb_path} && rm -f olook.list && \
-       echo "#{deb_info}" > olook.list && find olook/ -type d -ls | awk '{ print "f 755 root sys /srv/"$11" "$11"/*" }' | grep -v .git | grep -v .svn >> olook.list`
+      `cd #{@deb_path} && rm -f olook-#{@deploy_type}.list && \
+       echo "#{deb_info}" > olook-#{@deploy_type}.list && find olook/ -type d -ls | awk '{ print "f 755 root sys /srv/"$11" "$11"/*" }' | grep -v .git | grep -v .svn >> olook-#{@deploy_type}.list`
     end
 
     def pack_deb
-      `cd #{@deb_path}; epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} olook && \
+      `cd #{@deb_path}; epm -f deb -n -a amd64 --output-dir #{@deb_pool_path} olook-#{@deploy_type} && \
        cd #{@repo_path} && sh -x update_metadata.sh`
     end
   
