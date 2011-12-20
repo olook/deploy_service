@@ -14,7 +14,7 @@ module DeliveryBus
     end
 
     def process_action(action_type)
-      action = { :action => action_type }
+      action = { :type => action_type, :date => Time.now + 200 }
       action.to_json
     end
 
