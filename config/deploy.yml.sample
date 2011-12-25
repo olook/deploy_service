@@ -2,3 +2,8 @@ deb_path: /opt/workspace
 repo_path: /usr/share/nginx/www/
 deb_pool_path: /usr/share/nginx/www/pool
 bundled_repo_path: /opt/workspace/olook
+
+app_servers: 
+  http://app1.olook.com.br:3334/receptor: 200
+  http://app2.olook.com.br:3334/receptor: 500
+  http://app3.olook.com.br:3334/receptor: 800
