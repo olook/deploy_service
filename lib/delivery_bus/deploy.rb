@@ -26,7 +26,7 @@ module DeliveryBus
     private
 
     def pull_the_trigger
-      unless @repo_ref.include?('tags/homolog')
+      if @repo_ref.include?('tags/production')
         Trigger.new.pull!('deploy')
       end
     end
