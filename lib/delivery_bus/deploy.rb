@@ -20,9 +20,16 @@ module DeliveryBus
       manipulate_repo
       create_list_file
       pack_deb
+      pull_the_trigger
     end
 
     private
+
+    def pull_the_trigger
+      unless @repo_ref.include?('tags/homolog')
+        Trigger.new.pull!('deploy')
+      end
+    end
   
     def set_deploy_type
       if @repo_ref.include?('tags/homolog')

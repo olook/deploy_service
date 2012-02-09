@@ -7,7 +7,6 @@ end
 
 post '/deploy' do
   DeliveryBus::Deploy.new.dispatcher(params[:payload])
-  DeliveryBus::Trigger.new.pull!("deploy")
 end
 
 #get '/rollback' do
