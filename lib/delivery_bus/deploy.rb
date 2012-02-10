@@ -34,8 +34,8 @@ module DeliveryBus
     def set_deploy_type
       if @repo_ref.include?('tags/homolog')
         set_homolog_type
-      elsif @repo_ref.include?('tags/freemolog')
-        set_freemolog_type
+      elsif @repo_ref.include?('tags/development')
+        set_development_type
       elsif @repo_ref.include?('tags/production')
         set_production_type
       end
@@ -45,8 +45,8 @@ module DeliveryBus
       @deploy_type = 'homolog'
     end
 
-    def set_freemolog_type
-      @deploy_type = 'freemolog'
+    def set_development_type
+      @deploy_type = 'development'
     end
 
     def set_production_type
@@ -56,8 +56,8 @@ module DeliveryBus
     def set_deploy_version
       if @repo_ref.include?('tags/homolog')
         set_homolog_version
-      elsif @repo_ref.include?('tags/freemolog')
-        set_freemolog_version
+      elsif @repo_ref.include?('tags/development')
+        set_development_version
       elsif @repo_ref.include?('tags/production')
         set_production_version
       end
@@ -67,7 +67,7 @@ module DeliveryBus
       @deploy_version = @repo_ref[19..45]
     end
   
-    def set_freemolog_version
+    def set_development_version
       @deploy_version = @repo_ref[21..45]
     end
   
