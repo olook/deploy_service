@@ -68,7 +68,7 @@ module DeliveryBus
     end
   
     def set_development_version
-      @deploy_version = @repo_ref[21..45]
+      @deploy_version = @repo_ref[23..45]
     end
   
     def set_production_version
